@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Gracias por tu compra! - Panes Sin Gluten</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-orange: #ff6900;
+            --dark-bg: #0a0a0a;
+            --accent-bg: #1a0f00;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--accent-bg) 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 60px 40px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.4);
+        }
+
+        .icon-celebrate {
+            font-size: 4rem;
+            color: var(--primary-orange);
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+
+        @keyframes bounceIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to bottom, #ffffff, #ffa56d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            width: 100%;
+            padding: 22px 30px;
+            background: var(--primary-orange);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(255, 105, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(255, 105, 0, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .cta-button:active {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .glass-card {
+                padding: 40px 20px;
+            }
+            .cta-button {
+                font-size: 1rem;
+                padding: 20px 15px;
+            }
+        }
+    </style>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1339091451604449');
+    fbq('track', 'PageView');
+    fbq('track', 'Purchase', {value: 3.90, currency: 'USD'});
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <!-- UTMify Tracking Script -->
+    <script
+    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+    data-utmify-prevent-subids
+    async
+    defer
+    ></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <span class="icon-celebrate">🎉</span>
+            <h1>¡Gracias por tu compra!</h1>
+            <p>
+                Tu pedido ha sido confirmado con éxito. Hemos enviado un correo con los detalles de tu acceso a todas nuestras recetas.
+            </p>
+
+            <a href="index.html" class="cta-button">
+                Ir al Inicio
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
