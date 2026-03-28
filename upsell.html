@@ -96,6 +96,7 @@
             line-height: 1.2;
             background: linear-gradient(to bottom, #ffffff, #ffa56d);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
@@ -217,15 +218,18 @@
                 <br><strong>¡cada semana recibirás recetas nuevas como bono totalmente gratis!</strong>
             </p>
 
-            <button class="cta-button" onclick="window.location.href='#'">
-                SÍ, QUIERO CONFIRMAR MI COMPRA CON EL BONO...
-            </button>
 
-            <button class="no-bonus" onclick="window.location.href='#'">
-                No, no quiero este bono
-            </button>
+            <!-- HOTMART - Sales Funnel Widget -->
+            <div id="hotmart-sales-funnel"></div>
+            <!-- HOTMART - Sales Funnel Widget -->
+
         </div>
     </div>
 
+    <!-- HOTMART - Sales Funnel Widget Script -->
+    <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
+    <script>
+        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+    </script>
 </body>
 </html>
