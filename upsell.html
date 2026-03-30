@@ -192,25 +192,25 @@
             position: relative; /* Necessário para o posicionamento da máscara */
         }
 
-        /* Máscara totalmente responsiva (Desktop e Mobile) */
+        /* Máscara ampliada para cobrir NOME do produto e PREÇO */
         .price-mask {
             position: absolute;
-            top: 75px; /* Valor base para Desktop */
+            top: 60px; 
             left: 50%;
             transform: translateX(-50%);
             width: 95%;
-            height: 55px;
+            height: 110px; /* Aumentado para cobrir o nome também */
             background: #ffffff; 
             z-index: 10000;
             pointer-events: none;
             display: none;
         }
 
-        /* Ajuste específico para Telas Pequenas (Celular) */
+        /* Ajuste Mobile */
         @media (max-width: 480px) {
             .price-mask {
-                top: 115px !important; /* Baixou de 92px para 115px */
-                height: 60px !important;
+                top: 75px !important; 
+                height: 100px !important;
             }
         }
 
@@ -293,11 +293,13 @@
                 // Ajuste dinâmico baseado na altura do iframe se necessário
                 if (iframe && iframe.offsetHeight > 0) {
                     const h = iframe.offsetHeight;
-                    // Ajuste de precisão: movido de 33% para 42% para descer a máscara
+                    // Expande a máscara do nome até o preço
                     if (window.innerWidth < 480) {
-                        mask.style.top = (h * 0.42) + 'px';
+                        mask.style.top = (h * 0.25) + 'px'; 
+                        mask.style.height = (h * 0.35) + 'px'; 
                     } else {
-                        mask.style.top = (h * 0.35) + 'px';
+                        mask.style.top = (h * 0.22) + 'px';
+                        mask.style.height = (h * 0.30) + 'px';
                     }
                 }
             }
