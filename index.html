@@ -198,14 +198,15 @@ src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
 			width: 100% !important;
 		}
 		
-		/* Fix Heading Overlap and Size */
+		/* Perfect Banner for Mobile */
 		.elementor-element-7ba01da3 .elementor-heading-title {
-			font-size: clamp(1.1rem, 4vw, 1.8rem) !important;
-			line-height: 1.1 !important;
-			padding: 5px 10px !important;
+			font-size: clamp(0.85rem, 3.5vw, 1.5rem) !important;
+			line-height: 1.2 !important;
+			padding: 0 10px !important;
 			text-align: center !important;
 			word-wrap: break-word !important;
 			margin: 0 !important;
+			display: block !important;
 		}
 
 		/* Compact Top Banner Container */
@@ -216,7 +217,7 @@ src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
 			height: auto !important;
 		}
 		.elementor-element-7d0ecd9e .e-con-inner {
-			padding: 10px 0 !important;
+			padding: 4px 0 !important;
 			min-height: 0 !important;
 			margin: 0 !important;
 		}
@@ -243,6 +244,17 @@ src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
 				white-space: normal !important;
 				height: auto !important;
 				padding: 15px 20px !important;
+			}
+		}
+
+		/* Fix Floating Widgets/Stories Overlap on Mobile */
+		@media (max-width: 767px) {
+			[id*="stories"], [class*="stories"], .planweb-stories {
+				top: auto !important;
+				bottom: 0px !important;
+				left: 0px !important;
+				transform: scale(0.8) !important;
+				transform-origin: bottom left !important;
 			}
 		}
 
