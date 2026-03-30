@@ -192,14 +192,14 @@
             position: relative; /* Necessário para o posicionamento da máscara */
         }
 
-        /* Máscara visual agressiva para cobrir o preço (Hotmart iframe) */
+        /* Máscara corrigida e bem alta para não errar o local do preço */
         .price-mask {
             position: absolute;
-            top: 258px; /* Ajustado para cobrir exatamente 'R$ 16,76 / mês' */
+            top: 135px; /* Valor testado para ficar entre o texto e o botão */
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            height: 45px;
+            height: 60px; /* Mais alto para cobrir qualquer variação */
             background: #ffffff; 
             z-index: 10000;
             pointer-events: none;
