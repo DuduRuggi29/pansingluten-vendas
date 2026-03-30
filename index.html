@@ -247,12 +247,10 @@ src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
 			}
 		}
 
-		/* Fix Floating Widgets/Stories Overlap on Mobile */
+		/* Fix Floating Widgets/Stories - keep position fixed so video stays floating */
 		@media (max-width: 767px) {
 			[id*="stories"], [class*="stories"], .planweb-stories {
-				top: auto !important;
-				bottom: 0px !important;
-				left: 0px !important;
+				position: fixed !important;
 				transform: scale(0.8) !important;
 				transform-origin: bottom left !important;
 			}
