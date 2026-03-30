@@ -189,6 +189,49 @@ src="https://www.facebook.com/tr?id=1339091451604449&ev=PageView&noscript=1"
     document.head.appendChild(script);
 })();
 </script>
+	<!-- Mobile Responsiveness Fixes -->
+	<style>
+		html, body {
+			max-width: 100vw !important;
+			overflow-x: hidden !important;
+			width: 100% !important;
+		}
+		
+		/* Fix Heading Overlap and Size */
+		.elementor-element-7ba01da3 .elementor-heading-title {
+			font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+			line-height: 1.2 !important;
+			padding: 0 10px !important;
+			text-align: center !important;
+			word-wrap: break-word !important;
+		}
+
+		/* Fix Image Grid/Containers on Mobile */
+		@media (max-width: 767px) {
+			.e-con-inner, .e-con {
+				padding-left: 15px !important;
+				padding-right: 15px !important;
+				width: 100% !important;
+				max-width: 100vw !important;
+			}
+			
+			.elementor-widget-heading {
+				margin-bottom: 20px !important;
+			}
+
+			/* Ensure buttons don't overflow */
+			.elementor-button {
+				white-space: normal !important;
+				height: auto !important;
+				padding: 15px 20px !important;
+			}
+		}
+
+		/* Fix Floating Widget/Close Button Overlap */
+		[class*="close"], [class*="x-mark"], .elementor-button-dismiss {
+			z-index: 9999 !important;
+		}
+	</style>
 </head>
 <body class="wp-singular page-template page-template-elementor_canvas page page-id-8 wp-embed-responsive wp-theme-twentytwentyfive elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-8">
 			<div data-elementor-type="wp-page" data-elementor-id="8" class="elementor elementor-8" data-elementor-post-type="page">
