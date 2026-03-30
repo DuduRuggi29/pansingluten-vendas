@@ -189,18 +189,30 @@
             width: 100%;
             max-width: 100%;
             margin: 0 auto;
+            position: relative; /* Necessário para o posicionamento da máscara */
         }
 
-        /* Esconde o preço no widget da Hotmart */
+        /* Máscara visual para cobrir o preço (caso CSS direto falhe devido a iframe) */
+        .price-mask {
+            position: absolute;
+            top: 145px; /* Posição estimada baseada no layout padrão da Hotmart */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 30px;
+            background: #ffffff; /* Fundo branco do widget */
+            z-index: 99;
+            pointer-events: none; /* Garante que o clique passe para o botão abaixo se necessário */
+            display: none; /* Ativado via JS quando o widget carregar */
+        }
+
+        /* Tentativa de CSS direto (caso não seja iframe) */
         #hotmart-sales-funnel div[class*="price"], 
         #hotmart-sales-funnel span[class*="price"],
         #hotmart-sales-funnel div[class*="value"],
-        #hotmart-sales-funnel .hot-elements-price,
-        #hotmart-sales-funnel .hot-elements-value {
+        #hotmart-sales-funnel .hot-elements-price {
             display: none !important;
             visibility: hidden !important;
-            height: 0 !important;
-            overflow: hidden !important;
         }
     </style>
 
@@ -246,7 +258,9 @@
 
 
             <!-- HOTMART - Sales Funnel Widget -->
-            <div id="hotmart-sales-funnel"></div>
+            <div id="hotmart-sales-funnel">
+                <div class="price-mask" id="price-mask"></div>
+            </div>
             <!-- HOTMART - Sales Funnel Widget -->
 
         </div>
@@ -255,7 +269,29 @@
     <!-- HOTMART - Sales Funnel Widget Script -->
     <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
     <script>
-        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')
+        checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel');
+
+        // Função para esconder o preço ou posicionar a máscara
+        function managePriceVisibility() {
+            const funnel = document.getElementById('hotmart-sales-funnel');
+            const mask = document.getElementById('price-mask');
+            
+            // 1. Tenta esconder diretamente (caso não seja iframe)
+            const priceElements = funnel.querySelectorAll('[class*="price"], [class*="value"], .hot-elements-price');
+            if (priceElements.length > 0) {
+                priceElements.forEach(el => {
+                    el.style.setProperty('display', 'none', 'important');
+                    el.style.setProperty('visibility', 'hidden', 'important');
+                });
+                if (mask) mask.style.display = 'none';
+            } else {
+                // 2. Se não encontrar (provavelmente iframe), ativa a máscara visual
+                if (mask) mask.style.display = 'block';
+            }
+        }
+
+        // Executa em intervalos para garantir que funcione após o carregamento dinâmico
+        setInterval(managePriceVisibility, 500);
     </script>
 </body>
 </html>
