@@ -190,6 +190,18 @@
             max-width: 100%;
             margin: 0 auto;
         }
+
+        /* Esconde o preço no widget da Hotmart */
+        #hotmart-sales-funnel div[class*="price"], 
+        #hotmart-sales-funnel span[class*="price"],
+        #hotmart-sales-funnel div[class*="value"],
+        #hotmart-sales-funnel .hot-elements-price,
+        #hotmart-sales-funnel .hot-elements-value {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            overflow: hidden !important;
+        }
     </style>
 
     <!-- Meta Pixel Code -->
