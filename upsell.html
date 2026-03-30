@@ -192,18 +192,26 @@
             position: relative; /* Necessário para o posicionamento da máscara */
         }
 
-        /* Máscara corrigida e bem alta para não errar o local do preço */
+        /* Máscara totalmente responsiva (Desktop e Mobile) */
         .price-mask {
             position: absolute;
-            top: 135px; /* Valor testado para ficar entre o texto e o botão */
+            top: 75px; /* Valor base para Desktop */
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            height: 60px; /* Mais alto para cobrir qualquer variação */
+            width: 95%;
+            height: 55px;
             background: #ffffff; 
             z-index: 10000;
             pointer-events: none;
             display: none;
+        }
+
+        /* Ajuste específico para Telas Pequenas (Celular) */
+        @media (max-width: 480px) {
+            .price-mask {
+                top: 92px !important; 
+                height: 50px !important;
+            }
         }
 
         /* Tentativa de CSS direto (caso não seja iframe) */
@@ -277,10 +285,21 @@
         function forceHidePrice() {
             const mask = document.getElementById('price-mask');
             const funnel = document.getElementById('hotmart-sales-funnel');
+            const iframe = funnel.querySelector('iframe');
             
-            // Ativa a máscara para garantir que cubra o iframe
             if (mask) {
                 mask.style.display = 'block';
+                
+                // Ajuste dinâmico baseado na altura do iframe se necessário
+                if (iframe && iframe.offsetHeight > 0) {
+                    const h = iframe.offsetHeight;
+                    // O preço da Hotmart costuma ficar em ~32% da altura em funis de venda
+                    if (window.innerWidth < 480) {
+                        mask.style.top = (h * 0.33) + 'px';
+                    } else {
+                        mask.style.top = (h * 0.28) + 'px';
+                    }
+                }
             }
             
             // Tenta esconder via CSS caso não seja iframe (camada dupla)
